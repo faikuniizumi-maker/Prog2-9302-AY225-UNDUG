@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prelim Grading System Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #0D47A1 0%, #42A5F5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #0D47A1;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #42A5F5;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .input-section {
+            background: white;
+            border: 2px solid #0D47A1;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #42A5F5;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #0D47A1;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            padding: 12px 40px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-calculate {
+            background: #0D47A1;
+            color: white;
+        }
+
+        .btn-clear {
+            background: #42A5F5;
+            color: white;
+        }
+
+        .results-section {
+            background: white;
+            border: 2px solid #0D47A1;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .results-title {
+            font-weight: bold;
+            font-size: 16px;
+            color: #0D47A1;
+            margin-bottom: 15px;
+        }
+
+        .results-content {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .error-message {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            border-radius: 5px;
+            padding: 15px;
+            color: #c62828;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>PRELIM GRADING SYSTEM</h1>
+            <p>Calculate Your Required Exam Score</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="input-section">
+            <div class="form-group">
+                <label for="attendance">Attendance Score (0-100):</label>
+                <input type="number" id="attendance" min="0" max="100" step="0.01" placeholder="Enter attendance score">
+            </div>
+
+            <div class="form-group">
+                <label for="lab1">Lab Work 1 Grade:</label>
+                <input type="number" id="lab1" min="0" max="100" step="0.01" placeholder="Enter Lab Work 1 grade">
+            </div>
+
+            <div class="form-group">
+                <label for="lab2">Lab Work 2 Grade:</label>
+                <input type="number" id="lab2" min="0" max="100" step="0.01" placeholder="Enter Lab Work 2 grade">
+            </div>
+
+            <div class="form-group">
+                <label for="lab3">Lab Work 3 Grade:</label>
+                <input type="number" id="lab3" min="0" max="100" step="0.01" placeholder="Enter Lab Work 3 grade">
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-calculate" onclick="calculateGrades()">CALCULATE</button>
+            <button class="btn btn-clear" onclick="clearFields()">CLEAR</button>
+        </div>
+
+        <div class="results-section">
+            <div class="results-title">RESULTS:</div>
+            <div class="results-content" id="results">Enter your grades and click CALCULATE to see your required exam scores.</div>
+        </div>
+    </div>
+
+    <script src="DESIGN.js"></script>
+</body>
+</html>
